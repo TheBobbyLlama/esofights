@@ -1,0 +1,571 @@
+<html>
+    <head>
+        <title>Bobby Llama's Combat System!</title>
+        <link rel="stylesheet" type="text/css" href="./css/pathfinder.css" />
+        <link rel="stylesheet" type="text/css" href="./css/d6.css" />
+    </head>
+    <body>
+        <h1>Bobby Llama's Fight Roller</h1>
+        <div class="panel" style="min-width: 900px;">
+            <div class="top"><div class="left"><span /></div><div class="right"><span /></div><div class="center"><span /></div></div>
+            <div class="body">
+                <h2>Create Combatants</h2>
+                <div class="content">
+                    <table style="width: 100%;">
+                        <tr>
+                            <td style="border: solid 1px #709080; padding: 10px 20px; width: 50%;">
+                                <h3>Fighter 1</h3>
+                                <div>
+                                    <strong>Name</strong>
+                                    <input name="name1" type="text" />
+                                </div>
+                                <div>
+                                    <strong>Race</strong>
+                                    <select name="race1" onchange="raceSelect(1)">
+                                        <option>Altmer</option>
+                                        <option>Argonian</option>
+                                        <option>Bosmer</option>
+                                        <option>Breton</option>
+                                        <option>Dunmer</option>
+                                        <option>Imperial</option>
+                                        <option>Khajiit</option>
+                                        <option>Nord</option>
+                                        <option>Orc</option>
+                                        <option>Redguard</option>
+                                    </select>
+                                    <div id="bonus1" style="display: inline-block; font-size: 14px; font-style: italic; white-space: nowrap;" />
+                                </div>
+                                <div>
+                                    <strong>Weapon</strong>
+                                    <select name="weapon1" onchange="weaponSelect(1, 'weapon')">
+                                        <option>Bow</option>
+                                        <option>Dual Wield</option>
+                                        <option>One-Handed/Shield</option>
+                                        <option>One-Handed Only</option>
+                                        <option>Staff</option>
+                                        <option>Two-Handed</option>
+                                        <option>Unarmed</option>
+                                    </select>
+                                    <div id="weaponStats1" style="display: inline-block; font-size: 14px; font-style: italic; white-space: nowrap;" />
+                                </div>
+                                <div>
+                                    <strong>Armor</strong>
+                                    <select name="armor1" onchange="armorSelect(1)">
+                                        <option>Light</option>
+                                        <option>Medium</option>
+                                        <option>Heavy</option>
+                                    </select>
+                                    <div id="armorStats1" style="display: inline-block; font-size: 14px; font-style: italic; white-space: nowrap;" />
+                                </div>
+                                <div>
+                                    <strong>Level</strong>
+                                    <input name="level1" type="text" maxlength="4" style="width: 40px;" onchange="verifyHP()" />
+                                    <div style="display: inline-block; font-size: 14px; font-style: italic; white-space: nowrap;">Preface with V for veteran ranks (e.g. "V4" for veteran rank 4)</div>
+                                </div>
+                            </td>
+                            <td style="border: solid 1px #709080; padding: 10px 20px; width: 50%;">
+                                <h3>Fighter 2</h3>
+                                <div>
+                                    <strong>Name</strong>
+                                    <input name="name2" type="text" />
+                                </div>
+                                <div>
+                                    <strong>Race</strong>
+                                    <select name="race2" onchange="raceSelect(2)">
+                                        <option>Altmer</option>
+                                        <option>Argonian</option>
+                                        <option>Bosmer</option>
+                                        <option>Breton</option>
+                                        <option>Dunmer</option>
+                                        <option>Imperial</option>
+                                        <option>Khajiit</option>
+                                        <option>Nord</option>
+                                        <option>Orc</option>
+                                        <option>Redguard</option>
+                                    </select>
+                                    <div id="bonus2" style="display: inline-block; font-size: 14px; font-style: italic; white-space: nowrap;" />
+                                </div>
+                                <div>
+                                    <strong>Weapon</strong>
+                                    <select name="weapon2" onchange="weaponSelect(2, 'weapon')">
+                                        <option>Bow</option>
+                                        <option>Dual Wield</option>
+                                        <option>One-Handed/Shield</option>
+                                        <option>One-Handed Only</option>
+                                        <option>Staff</option>
+                                        <option>Two-Handed</option>
+                                        <option>Unarmed</option>
+                                    </select>
+                                    <div id="weaponStats2" style="display: inline-block; font-size: 14px; font-style: italic; white-space: nowrap;" />
+                                </div>
+                                <div>
+                                    <strong>Armor</strong>
+                                    <select name="armor2" onchange="armorSelect(2)">
+                                        <option>Light</option>
+                                        <option>Medium</option>
+                                        <option>Heavy</option>
+                                    </select>
+                                    <div id="armorStats2" style="display: inline-block; font-size: 14px; font-style: italic; white-space: nowrap;" />
+                                </div>
+                                <div>
+                                    <strong>Level</strong>
+                                    <input name="level2" type="text" maxlength="4" style="width: 40px;" onchange="verifyHP()" />
+                                    <div style="display: inline-block; font-size: 14px; font-style: italic; white-space: nowrap;">Preface with V for veteran ranks (e.g. "V4" for veteran rank 4)</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="padding-top: 20px; text-align: center;">
+                                <div id="startFight">
+                                    <input id="startButton" type="button" value="Fight!" onclick="startFight();" />
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="bottom"><div class="left"><span /></div><div class="right"><span /></div><div class="center"><span /></div></div>
+        </div>
+        <div class="panel" id="fightPanel" style="display: none; min-width: 900px;">
+            <div class="top"><div class="left"><span /></div><div class="right"><span /></div><div class="center"><span /></div></div>
+            <div class="body">
+                <h2>Fight!</h2>
+                <div class="content">
+                    <div id="roundCounter" style="color: #709080; float: right; font-size: 14px; font-style: italic; position: relative; top: -44px;" title="Global attack bonus shown in parentheses.">
+                    </div>
+                    <table  style="width: 100%;">
+                        <tr>
+                            <td>
+                                <strong id="fighterName1">Fighter 1:</strong> <span id="curHP1">0</span>/<span id="maxHP1">0</span> HP
+                            </td>
+                            <td>
+                                <strong id="fighterName2">Fighter 2:</strong> <span id="curHP2">0</span>/<span id="maxHP2">0</span> HP
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 50%;">
+                                <div>
+                                    Weapon:
+                                    <select name="curWeapon1" onchange="weaponSelect(1, 'curWeapon')">
+                                        <option>Bow</option>
+                                        <option>Dual Wield</option>
+                                        <option>One-Handed/Shield</option>
+                                        <option>One-Handed Only</option>
+                                        <option>Staff</option>
+                                        <option>Two-Handed</option>
+                                        <option>Unarmed</option>
+                                    </select>
+                                    <div id="curWeaponStats1" style="display: inline-block; font-size: 14px; font-style: italic; white-space: nowrap;" />
+                                </div>
+                                <div>
+                                    <input id="swing1" type="button" value="Swing->" onclick="swing(0, 1)" />
+                                </div>
+                                <div>
+                                    Defense:
+                                    <select name="defense1">
+                                        <option>Block</option>
+                                        <option>Dodge</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td style="width: 50%;">
+                                <div>
+                                    Weapon:
+                                    <select name="curWeapon2" onchange="weaponSelect(2, 'curWeapon')">
+                                        <option>Bow</option>
+                                        <option>Dual Wield</option>
+                                        <option>One-Handed/Shield</option>
+                                        <option>One-Handed Only</option>
+                                        <option>Staff</option>
+                                        <option>Two-Handed</option>
+                                        <option>Unarmed</option>
+                                    </select>
+                                    <div id="curWeaponStats2" style="display: inline-block; font-size: 14px; font-style: italic; white-space: nowrap;" />
+                                </div>
+                                <div>
+                                    Defense:
+                                    <select name="defense2">
+                                        <option>Block</option>
+                                        <option>Dodge</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <input id="swing2" type="button" value="<- Swing" onclick="swing(1, 0)" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-top: 20px;">
+                                <div id="roll11" class="roll0"><span /></div>
+                                <div id="roll12" class="roll0"><span /></div>
+                                <div id="roll13" class="roll0"><span /></div>
+                                <div id="rollTotal1" class="rollTotal" />
+                            </td>
+                            <td style="padding-top: 20px;">
+                                <div id="roll21" class="roll0"><span /></div>
+                                <div id="roll22" class="roll0"><span /></div>
+                                <div id="roll23" class="roll0"><span /></div>
+                                <div id="rollTotal2" class="rollTotal" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="padding-top: 10px;">
+                                <h3 id="result" style="text-align: center;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="padding-top: 20px; text-align: center;">
+                                <input type="button" value="End Fight" onclick="endFight()" />
+                            </td>
+                        </td>
+                    </table>
+                </div>
+            </div>
+            <div class="bottom"><div class="left"><span /></div><div class="right"><span /></div><div class="center"><span /></div></div>
+        </div>
+        <div class="panel" style="min-width: 900px;">
+            <div class="top"><div class="left"><span /></div><div class="right"><span /></div><div class="center"><span /></div></div>
+            <div class="body">
+                <h2>Rules</h2>
+                <div class="content">
+                    <div style="margin-bottom: 8px;">
+                        Each combatant is assigned HP equal to their character level + 20.  Veteran ranks each give 2 more HP.
+                    </div>
+                    <div>
+                        In combat, each combatant rolls 3 6-sided dice.  If the attacker beats the defender's defense roll, the margin of success is multiplied by 5 as the base value.  Armor worn by the defender can reduce the multiplier.  Some weapons can also affect the multiplier (either positively or negatively).  There is an escalating bonus on attacks that increases after both combatants have tried an attack, to ensure that fights don't drag on.
+                    </div>
+                    <h3>Weapon Notes</h3>
+                    <h4>Bow</h4>
+                    <div class="subcontent">
+                        Melee attackers against a bow user take a penalty on attack rolls based on their armor level - 1 for light, 2 for medium, and 3 for heavy.  This simulates the archer's ability to kite enemies.  However, there is a hefty Block penalty with a bow, which effectively forces the user to Dodge against attacks, penalizing them for the armor weight they choose.
+                    </div>
+                    <h4>Dual Wield</h4>
+                    <div class="subcontent">
+                        A dual wielder attacks and defends equally well, with no need for modifiers.
+                    </div>
+                    <h4>One-Handed and Shield</h4>
+                    <div class="subcontent">
+                        Using a shield is primarily defensive, giving the user a nice Block bonus at the expense of damage.  However, if an attack against the user fails by more than 5, the amount of failure beyond 5 is converted into a shield bash counterattack.
+                    </div>
+                    <h4>One-Handed Only</h4>
+                    <div class="subcontent">
+                        This is a possible way a fighter could equip themself, so it is included here.  Since it is not an effective way to fight in ESO, it is relatively weak.
+                    </div>
+                    <h4>Staff</h4>
+                    <div class="subcontent">
+                        Staffs have a large damage penalty, but also ignore armor.  They also have a substantial attack bonus which allows the staff user to keep damage on their target consistently.  The Block penalty keeps most characters using Dodge and subject to armor penalties.
+                    </div>
+                    <h4>Two-Handed</h4>
+                    <div class="subcontent">
+                        Two-handed appears to have a lot of penalties, but the damage bonus is very powerful.  Users of this weapon type gamble on landing devastating hits.
+                    </div>
+                    <h4>Unarmed</h4>
+                    <div class="subcontent">
+                        This is only here in case a fighter loses their weapon through roleplay.  It is not intended to be balanced against the other weapon types.
+                    </div>
+                </div>
+            </div>
+            <div class="bottom"><div class="left"><span /></div><div class="right"><span /></div><div class="center"><span /></div></div>
+        </div>
+    </body>
+    <script type="text/javascript">
+    var modifierDescription = [ 'Block', 'Dodge', 'Attack', 'Dmg/success' ];
+
+    var raceModifiers =
+    [   // Block, Dodge, Attack
+        [ 0,      0,      1 ], // Altmer
+        [ 1,      0,      0 ], // Argonian
+        [ 0,      1,      0 ], // Bosmer
+        [ 0,      0,      1 ], // Breton
+        [ 0,      1,      0 ], // Dunmer
+        [ 1,      0,      0 ], // Imperial
+        [ 0,      1,      0 ], // Khajiit
+        [ 0,      0,      1 ], // Nord
+        [ 1,      0,      0 ], // Orc
+        [ 1,      0,      0 ]  // Redguard
+    ];
+
+    var weaponSpecial = ['Melee attackers hindered by armor', '', 'Shield bash counterattack', '', 'Ignores armor', '', ''];
+    var weaponModifiers =
+    [   // Block, Dodge, Attack, Damage
+        [ -4,     0,      0,     -1 ], // Bow
+        [ 0,      0,      0,      0 ], // Dual-Wield
+        [ 2,      0,      0,     -1 ], // One-Handed/Shield
+        [ 0,      1,      1,     -1 ], // One-Handed Only
+        [ -2,     0,      2,     -2 ], // Staff
+        [ -1,    -1,     -1,      1 ], // Two-Handed
+        [ 0,      1,      0,     -2 ], // Unarmed
+    ];
+
+    var WEAPON_BOW = 0; // Constant.
+    var WEAPON_SHIELD = 2; // Constant.
+    var WEAPON_STAFF = 4; // Constant.
+
+    var fighter =
+    [
+        { name:'Fighter 1', race:0, weapon:0, armor:0, curHP:0, maxHP:0, swingCount:0 },
+        { name:'Fighter 2', race:0, weapon:0, armor:0, curHP:0, maxHP:0, swingCount:0 }
+    ];
+
+    function raceSelect(fighter)
+    {
+        var i;
+        var temp = document.getElementsByName('race' + fighter)[0].selectedIndex;
+
+        for (i = 0; i < 3; i++)
+        {
+            if (raceModifiers[temp][i] > 0)
+            {
+                document.getElementById('bonus' + fighter).innerHTML = "+" + raceModifiers[temp][i] + ' ' + modifierDescription[i];
+                return;
+            }
+        }
+
+        document.getElementById('bonus' + fighter).innerHTML = '';
+    }
+
+    function weaponSelect(index, prefix)
+    {
+        var i;
+        var temp = document.getElementsByName(prefix + index)[0].selectedIndex;
+
+        document.getElementById(prefix + 'Stats' + index).innerHTML = '';
+
+        for (i = 0; i < 4; i++)
+        {
+            if (weaponModifiers[temp][i] != 0)
+            {
+                if (document.getElementById(prefix + 'Stats' + index).innerHTML != '')
+                    document.getElementById(prefix + 'Stats' + index).innerHTML += ', ';
+
+                if (weaponModifiers[temp][i] > 0)
+                    document.getElementById(prefix + 'Stats' + index).innerHTML += '+';
+
+                document.getElementById(prefix + 'Stats' + index).innerHTML += weaponModifiers[temp][i] + ' ' + modifierDescription[i];
+            }
+        }
+
+        if (document.getElementById(prefix + 'Stats' + index).innerHTML == '')
+            document.getElementById(prefix + 'Stats' + index).innerHTML = "No modifiers";
+        else if (weaponSpecial[temp] != '')
+            document.getElementById(prefix + 'Stats' + index).innerHTML += ', ' + weaponSpecial[temp];
+
+        if (prefix == 'curWeapon')
+        {
+            fighter[index-1].weapon = temp;
+            chooseDefense(index-1);
+        }
+    }
+
+    function armorSelect(fighter)
+    {
+        var temp = document.getElementsByName('armor' + fighter)[0].selectedIndex;
+
+        if (temp == 0)
+            document.getElementById('armorStats' + fighter).innerHTML = 'No modifiers';
+        else
+            document.getElementById('armorStats' + fighter).innerHTML = '-' + temp + ' Dodge; DR ' + temp + '/failure';
+    }
+
+    function verifyHP()
+    {
+        document.getElementById('startButton').disabled = ((checkHPValue(document.getElementsByName('level1')[0].value) <= 0) || (checkHPValue(document.getElementsByName('level2')[0].value) <= 0));
+    }
+
+    function checkHPValue(value)
+    {
+        var level = 0;
+
+        value = value.toUpperCase().trim();
+
+        if (value.charAt(0) == 'V')
+        {
+            level = Number(value.replace(/\D/g, ''));
+
+            if ((level < 1) || (level > 12))
+                return 0;
+
+            level = 49 + 2 * level;
+        }
+        else
+        {
+            level = Number(value);
+
+            if ((level < 1) || (level > 49))
+                return 0;
+        }
+
+        if (isNaN(level))
+            return 0;
+        else
+            return 20 + level;
+    }
+
+    // Set fighter info on load.
+    raceSelect(1);
+    raceSelect(2);
+    weaponSelect(1, 'weapon');
+    weaponSelect(2, 'weapon');
+    armorSelect(1);
+    armorSelect(2);
+    verifyHP();
+
+    function disableFighterEntry(disabled)
+    {
+        document.getElementsByName('name1')[0].disabled = document.getElementsByName('race1')[0].disabled = document.getElementsByName('weapon1')[0].disabled = document.getElementsByName('armor1')[0].disabled = document.getElementsByName('level1')[0].disabled = disabled;
+        document.getElementsByName('name2')[0].disabled = document.getElementsByName('race2')[0].disabled = document.getElementsByName('weapon2')[0].disabled = document.getElementsByName('armor2')[0].disabled = document.getElementsByName('level2')[0].disabled = disabled;
+    }
+
+    disableFighterEntry(false);
+
+    function updateHP()
+    {
+        document.getElementById('curHP1').innerHTML = fighter[0].curHP;
+        document.getElementById('curHP2').innerHTML = fighter[1].curHP;
+    }
+
+    function chooseDefense(index)
+    {
+        if (raceModifiers[fighter[index].race][0] + weaponModifiers[fighter[index].weapon][0] > raceModifiers[fighter[index].race][1] + weaponModifiers[fighter[index].weapon][1] - fighter[index].armor)
+            document.getElementsByName('defense' + (index+1))[0].selectedIndex = 0;
+        else
+            document.getElementsByName('defense' + (index+1))[0].selectedIndex = 1;
+    }
+
+    function startFight()
+    {
+        var temp;
+
+        fighter[0].maxHP = checkHPValue(document.getElementsByName('level1')[0].value);
+        fighter[1].maxHP = checkHPValue(document.getElementsByName('level2')[0].value);
+
+        if ((fighter[0].maxHP == 0) || (fighter[1].maxHP == 0))
+        {
+            alert('Please enter a HP value for both fighters.');
+            return;
+        }
+
+        temp = document.getElementsByName('name1')[0].value;
+
+        if (temp == '')
+            temp = 'Fighter 1';
+
+        document.getElementById('fighterName1').innerHTML = fighter[0].name = temp;
+
+        temp = document.getElementsByName('name2')[0].value;
+
+        if (temp == '')
+            temp = 'Fighter 2';
+
+        document.getElementById('fighterName2').innerHTML = fighter[1].name = temp;
+
+        document.getElementsByName('curWeapon1')[0].selectedIndex = document.getElementsByName('weapon1')[0].selectedIndex;
+        document.getElementsByName('curWeapon2')[0].selectedIndex = document.getElementsByName('weapon2')[0].selectedIndex;
+        weaponSelect(1, 'curWeapon'); // fighter[0].weapon will be set in here.
+        weaponSelect(2, 'curWeapon'); // fighter[1].weapon will be set in here.
+        fighter[0].armor = document.getElementsByName('armor1')[0].selectedIndex;
+        fighter[1].armor = document.getElementsByName('armor2')[0].selectedIndex;
+
+        document.getElementById('maxHP1').innerHTML = fighter[0].curHP = fighter[0].maxHP;
+        document.getElementById('maxHP2').innerHTML = fighter[1].curHP = fighter[1].maxHP;
+        updateHP();
+
+        fighter[0].race = document.getElementsByName('race1')[0].selectedIndex;
+        fighter[1].race = document.getElementsByName('race2')[0].selectedIndex;
+
+        chooseDefense(0);
+        chooseDefense(1);
+
+        document.getElementById('roll11').className = document.getElementById('roll12').className = document.getElementById('roll13').className = document.getElementById('roll21').className = document.getElementById('roll22').className = document.getElementById('roll23').className = 'roll0';
+        document.getElementById('rollTotal1').innerHTML = document.getElementById('rollTotal2').innerHTML = document.getElementById('result').innerHTML = document.getElementById('roundCounter').innerHTML = '';
+        document.getElementById('rollTotal1').style.display = document.getElementById('rollTotal2').style.display = 'none';
+        document.getElementById('startFight').style.display = 'none';
+        document.getElementById('fightPanel').style.display = 'block';
+        document.getElementById('swing1').disabled = document.getElementById('swing2').disabled = false;
+        fighter[0].swingCount = fighter[1].swingCount = 0;
+        disableFighterEntry(true);
+    }
+
+    function endFight()
+    {
+        document.getElementById('startFight').style.display = 'block';
+        document.getElementById('fightPanel').style.display = 'none';
+        disableFighterEntry(false);
+    }
+
+    function rollDie(fighter, bonus)
+    {
+        var i;
+        var total = 0;
+
+        for (i = 1; i <= 3; i++)
+        {
+            var roll = Math.min(Math.ceil(6 * Math.random()), 6);
+            total += roll;
+            document.getElementById('roll' + fighter + i).className = 'roll' + roll;
+        }
+
+        document.getElementById('rollTotal1').style.display = document.getElementById('rollTotal2').style.display = '';
+
+        if (bonus < 0)
+            document.getElementById('rollTotal' + fighter).innerHTML = total + ' - ' + Math.abs(bonus) + ' = ' + (total + bonus);
+        else
+            document.getElementById('rollTotal' + fighter).innerHTML = total + ' + ' + bonus + ' = ' + (total + bonus);
+
+        total += bonus;
+
+        return total;
+    }
+
+    function swing(attacker, defender)
+    {
+        var result;
+        var damage = '-';
+        var armormod;
+        var atkBonus = raceModifiers[fighter[attacker].race][2] + weaponModifiers[fighter[attacker].weapon][2];
+        var defBonus = raceModifiers[fighter[defender].race][document.getElementsByName('defense2')[0].selectedIndex];
+
+        if ((fighter[defender].weapon == WEAPON_BOW) && (fighter[attacker].weapon != WEAPON_BOW) && (fighter[attacker].weapon != WEAPON_STAFF))
+            atkBonus -= fighter[attacker].armor + 1;
+
+        if (document.getElementsByName('defense' + (defender+1))[0].selectedIndex == 1)
+        {
+            defBonus += weaponModifiers[fighter[defender].weapon][1];
+            defBonus -= fighter[defender].armor;
+        }
+        else
+            defBonus += weaponModifiers[fighter[defender].weapon][0];
+
+        var atkRoll = rollDie(attacker+1, atkBonus + Math.min(fighter[attacker].swingCount, fighter[attacker].swingCount));
+        var defRoll = rollDie(defender+1, defBonus);
+
+        if (atkRoll > defRoll)
+        {
+            armormod = (fighter[attacker].weapon == WEAPON_STAFF) ? 4 : Math.max(5 - fighter[defender].armor + weaponModifiers[fighter[attacker].weapon][3], 1);
+            damage = armormod * (atkRoll - defRoll);
+            fighter[defender].curHP = Math.max(Number(fighter[defender].curHP) - damage, 0);
+            updateHP();
+            result = 'HIT';
+        }
+        else if ((fighter[defender].weapon == WEAPON_SHIELD) && (defRoll - atkRoll > 5))
+        {
+            armormod = Math.max(5 - fighter[attacker].armor + weaponModifiers[fighter[defender].weapon][3], 1);
+            damage = armormod * (defRoll - atkRoll - 5);
+            fighter[attacker].curHP = Math.max(Number(fighter[attacker].curHP) - damage, 0);
+            updateHP();
+            result = 'SHIELD BASHED';
+            damage = '(' + damage + ')';
+        }
+        else
+            result = 'MISS';
+
+        document.getElementById('result').innerHTML = 'Rolls: Attacker - ' + atkRoll + ' Defender - ' + defRoll + ' // Damage: ' + damage + ' // HP: ' + fighter[0].name + ' - ' + fighter[0].curHP + ' ' + fighter[1].name + ' - ' + fighter[1].curHP + ' // ' + fighter[attacker].name + ': ' + result;
+
+        document.getElementById('swing' + (attacker + 1)).disabled = true;
+        document.getElementById('swing' + (defender + 1)).disabled = ((fighter[defender].curHP <= 0) || (fighter[attacker].curHP <= 0));
+
+        document.getElementById('roundCounter').innerHTML = '<b>Round ' + (fighter[attacker].swingCount + fighter[defender].swingCount + 1) + '</b> (+' + Math.min(fighter[attacker].swingCount, fighter[attacker].swingCount) + ')';
+        fighter[attacker].swingCount++;
+    }
+    </script>
+</html>

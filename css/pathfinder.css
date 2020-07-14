@@ -1,0 +1,267 @@
+body
+{
+    background-color: #ffffff;
+    cursor: default;
+    font-family: sans-serif;
+    margin: 20px 40px 20px 40px;
+    padding: 0px;
+}
+
+a:link
+{
+    color: #2030C0;
+}
+
+a:link:hover
+{
+    color: #3040FF;
+}
+
+a:visited
+{
+    color: #600080;
+}
+
+a:visited:hover
+{
+    color: #8020A0;
+}
+
+h1
+{
+    color: #204030;
+    display: block;
+    font-size: 32px;
+}
+
+h2
+{
+    display: block;
+    font-size: 24px;
+    margin: 0px;
+    padding: 0px;
+}
+
+h3
+{
+    display: block;
+    font-size: 20px;
+    margin: 0px 0px 4px 0px;
+    padding: 0px;
+}
+
+h4
+{
+    display: block;
+    font-size: 18px;
+    margin: 0px;
+    padding: 6px;
+}
+
+form
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+table
+{
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+
+ul
+{
+    margin: 0px;
+}
+
+div.panel, th, td
+{
+    color: #183828;
+}
+
+div.panel h2
+{
+    position: relative;
+    top: -6px;
+}
+
+div.panel + div.panel
+{
+    margin-top: 20px;
+}
+
+div.panel div.top
+{
+    clear: both;
+    height: 20px;
+}
+
+div.panel div.top div.left
+{
+    background: url("../images/Corners.png") no-repeat scroll left top;
+    float: left;
+    height: 20px;
+    width: 20px;
+}
+
+div.panel div.top div.right
+{
+    background: url("../images/Corners.png") no-repeat scroll right top;
+    float: right;
+    height: 20px;
+    width: 20px;
+}
+
+div.panel div.top div.center
+{
+    background-color: #e0f0e8;
+    border-top: solid 1px #709080;
+    height: 20px;
+    margin: 0px 20px;
+}
+
+div.panel div.bottom
+{
+    clear: both;
+    height: 20px;
+}
+
+div.panel div.bottom div.left
+{
+    background: url("../images/Corners.png") no-repeat scroll left bottom;
+    float: left;
+    height: 21px; /* WHY? */
+    width: 20px;
+}
+
+div.panel div.bottom div.right
+{
+    background: url("../images/Corners.png") no-repeat scroll right bottom;
+    float: right;
+    height: 21px; /* WHY? */
+    width: 20px;
+}
+
+div.panel div.bottom div.center
+{
+    background-color: #e0f0e8;
+    border-bottom: solid 1px #709080;
+    height: 20px;
+    margin: 0px 20px;
+}
+
+div.panel div.body
+{
+    background-color: #e0f0e8;
+    border-left: solid 1px #709080;
+    border-right: solid 1px #709080;
+    padding: 0px 20px 0px 20px;
+    position: relative;
+    top: 0px;
+}
+
+div.subcontent
+{
+    padding: 0px 0px 0px 8px;
+}
+
+div.subcontent + div.subcontent
+{
+    padding-top: 8px;
+}
+
+div + h3
+{
+    padding-top: 8px;
+}
+
+div.holder
+{
+    display: inline-block;
+    margin-left: 8px;
+}
+
+div.anatomy
+{
+    margin-top: 8px;
+}
+
+div.anatomy th, div.anatomy td
+{
+    border: solid 1px #709080;
+    margin: 0px;
+    padding: 4px;
+    text-align: left;
+}
+
+div.anatomy table.indent
+{
+    margin-left: 60px;
+    margin-top: -1px;
+}
+
+div.anatomy table.indent2
+{
+    margin-left: 120px;
+    margin-top: -1px;
+}
+
+div.anatomy table.indent3
+{
+    margin-left: 180px;
+    margin-top: -1px;
+}
+
+div.anatomy table.indent4
+{
+    margin-left: 240px;
+    margin-top: -1px;
+}
+
+div.closed
+{
+    cursor: pointer;
+}
+
+div.closed h2
+{
+/*
+    position: absolute;
+    top: -14px;
+*/
+    margin: -4px 0px;
+    position: relative;
+    top: 0px;
+}
+
+div.closed div.content
+{
+    display: none;
+}
+
+*.aligntobottom
+{
+    vertical-align: bottom;
+}
+
+.noise
+{
+    display: none;
+}
+
+#popupPanel
+{
+    bottom: 0px;
+    cursor: pointer;
+    left: 0px;
+    padding: 80px 40px 40px 40px;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+}
+
+#popupPanel div.content
+{
+    overflow: auto;
+}

@@ -1,0 +1,85 @@
+div.roll0
+{
+    display: none;
+}
+
+div.roll1
+{
+    background-image: url("../images/d6.png");
+    display: inline-block;
+    height: 40px;
+    margin: 0px 2px;
+    min-height: 40px;
+    min-width: 40px;
+    width: 40px;
+}
+
+div.roll2
+{
+    background-image: url("../images/d6.png");
+    background-position: -40px 0px;
+    display: inline-block;
+    height: 40px;
+    margin: 0px 2px;
+    min-height: 40px;
+    min-width: 40px;
+    width: 40px;
+}
+
+div.roll3
+{
+    background-image: url("../images/d6.png");
+    background-position: -80px 0px;
+    display: inline-block;
+    height: 40px;
+    margin: 0px 2px;
+    min-height: 40px;
+    min-width: 40px;
+    width: 40px;
+}
+
+div.roll4
+{
+    background-image: url("../images/d6.png");
+    background-position: -120px 0px;
+    display: inline-block;
+    height: 40px;
+    margin: 0px 2px;
+    min-height: 40px;
+    min-width: 40px;
+    width: 40px;
+}
+
+div.roll5
+{
+    background-image: url("../images/d6.png");
+    background-position: -160px 0px;
+    display: inline-block;
+    height: 40px;
+    margin: 0px 2px;
+    min-height: 40px;
+    min-width: 40px;
+    width: 40px;
+}
+
+div.roll6
+{
+    background-image: url("../images/d6.png");
+    background-position: -200px 0px;
+    display: inline-block;
+    height: 40px;
+    margin: 0px 2px;
+    min-height: 40px;
+    min-width: 40px;
+    width: 40px;
+}
+
+div.rollTotal
+{
+    display: inline-block;
+    font-weight: bold;
+    height: 40px;
+    margin: 0px 2px;
+    min-height: 40px;
+    vertical-align: center;
+}
